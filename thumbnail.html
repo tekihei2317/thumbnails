@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTubeサムネイル - 月配列タイピングゲーム拡張機能</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .thumbnail {
+        width: 1280px;
+        height: 720px;
+        position: relative;
+        background: #ffffff;
+        border: 2px solid #000000;
+        overflow: hidden;
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 60px 80px;
+        box-sizing: border-box;
+      }
+
+      .left-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 60px;
+      }
+
+      .title {
+        font-size: 140px;
+        font-weight: 900;
+        color: #000000;
+        margin: 0;
+        line-height: 1.1;
+        letter-spacing: -2px;
+      }
+
+      .subtitle {
+        font-size: 40px;
+        color: #666666;
+        margin-top: 20px;
+        font-weight: 500;
+      }
+
+      .right-section {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .app-image {
+        max-width: 400px;
+        max-height: 500px;
+        border: 2px solid #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="thumbnail">
+      <div class="content">
+        <div class="left-section">
+          <h1 class="title">できた</h1>
+          <p class="subtitle">月配列タイピングゲーム拡張機能</p>
+        </div>
+        <div class="right-section">
+          <img
+            src="images/image.png"
+            alt="月配列エミュレーター"
+            class="app-image"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
