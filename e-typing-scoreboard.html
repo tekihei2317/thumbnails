@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>e-typing腕試しスコア競争</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #000000;
+        color: #ffffff;
+        height: 100vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+        flex-shrink: 0;
+      }
+
+      .main-title {
+        font-size: 48px;
+        font-weight: 900;
+        color: #cccccc;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .time-info {
+        font-size: 24px;
+        color: #ffffff;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .description {
+        font-size: 18px;
+        color: #cccccc;
+        line-height: 1.4;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .scoreboard {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+        min-height: 0;
+      }
+
+      .score-header {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        gap: 20px;
+        padding: 15px 25px;
+        background: #666666;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .score-row {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+        gap: 20px;
+        padding: 18px 25px;
+        background: #222222;
+        border-bottom: 2px solid #444444;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .score-row:last-child {
+        border-radius: 0 0 10px 10px;
+      }
+
+      .player-name {
+        text-align: left;
+      }
+
+      .player-score {
+        text-align: center;
+        font-weight: bold;
+        color: #cccccc;
+      }
+
+      .score-row:nth-child(2) {
+        background: #333333;
+      }
+
+      .score-row:nth-child(2) .player-score {
+        color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="main-title">e-typing腕試しスコア競争</h1>
+      <h2
+        class="main-title"
+        style="font-size: 48px; margin-top: -10px; color: #ffd700"
+      >
+        （お題: エコライフ）
+      </h2>
+      <div class="time-info">時間: 21:05~21:40</div>
+      <p class="description">
+        誰でも参加歓迎です。<br />
+        時間内にe-typingで出したスコアをチャットで教えて下さい。
+      </p>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score-header">
+        <div class="player-name">プレイヤー</div>
+        <div class="player-score">スコア</div>
+      </div>
+
+      <div class="score-row">
+        <div class="player-name">uaaaaaaaa</div>
+        <div class="player-score">619</div>
+      </div>
+
+      <div class="score-row">
+        <div class="player-name">unused_HAL</div>
+        <div class="player-score">589</div>
+      </div>
+
+      <div class="score-row">
+        <div class="player-name">鉄馬</div>
+        <div class="player-score">575</div>
+      </div>
+
+      <div class="score-row">
+        <div class="player-name">---</div>
+        <div class="player-score">---</div>
+      </div>
+
+      <div class="score-row">
+        <div class="player-name">---</div>
+        <div class="player-score">---</div>
+      </div>
+    </div>
+  </body>
+</html>
