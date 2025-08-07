@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>配信レイアウト</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: transparent;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+
+      .layout-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* 画面共有エリア（メイン） */
+      .screen-share-area {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 1420px;
+        height: 800px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+      }
+
+      .screen-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 24px;
+        text-align: center;
+      }
+
+      /* 右側のパネルエリア */
+      .sidebar {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 460px;
+        height: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* 共通パネルスタイル */
+      .panel {
+        background: rgba(30, 30, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        color: white;
+      }
+
+      .panel-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #4caf50;
+        border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+        padding-bottom: 8px;
+      }
+
+      /* 時計パネル */
+      .clock-panel {
+        flex: 0 0 auto;
+      }
+
+      .clock-time {
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        font-family: "Courier New", monospace;
+        color: #ffd700;
+      }
+
+      .clock-date {
+        font-size: 16px;
+        text-align: center;
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* 配信内容パネル */
+      .content-panel {
+        flex: 1;
+      }
+
+      .content-item {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        border-left: 4px solid #4caf50;
+      }
+
+      .content-item:last-child {
+        margin-bottom: 0;
+      }
+
+      /* メモパネル */
+      .memo-panel {
+        flex: 1;
+      }
+
+      .memo-content {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        padding: 15px;
+        min-height: 200px;
+        font-size: 28px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* 下部配信内容エリア */
+      .bottom-area {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 1880px;
+        height: 220px;
+        background: rgba(30, 30, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .content-section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .content-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #4caf50;
+        margin-bottom: 15px;
+        text-align: center;
+        border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+        padding-bottom: 8px;
+      }
+
+      .content-text {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 56px;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-container">
+      <!-- 画面共有エリア -->
+      <div class="screen-share-area">
+        <div class="screen-placeholder"></div>
+      </div>
+
+      <!-- 右側パネル -->
+      <div class="sidebar">
+        <!-- 時計パネル -->
+        <div class="panel clock-panel">
+          <div class="clock-time" id="clock-time">00:00:00</div>
+          <div class="clock-date" id="clock-date">2024年1月1日</div>
+        </div>
+
+        <!-- メモパネル -->
+        <div class="panel memo-panel">
+          <div class="memo-content">
+            公式ワード1→ほどほどに練習<br />
+            公式ワード2→分割したワードファイルで練習<br />
+            公式ワード3→未定<br />
+            公式ワード4→まずはワード慣れするところから、特にカタカタ語を意識<br />
+          </div>
+        </div>
+      </div>
+
+      <!-- 下部配信内容エリア -->
+      <div class="bottom-area">
+        <div class="content-section">
+          <div class="content-text">Weather Typing公式ワード1~4を練習</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 時計の更新
+      function updateClock() {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString("ja-JP", { hour12: false });
+        const dateStr = now.toLocaleDateString("ja-JP", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          weekday: "long",
+        });
+
+        document.getElementById("clock-time").textContent = timeStr;
+        document.getElementById("clock-date").textContent = dateStr;
+      }
+
+      // 1秒ごとに時計を更新
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
